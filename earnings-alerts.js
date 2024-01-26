@@ -46,24 +46,29 @@ async function automateWorkflow(strategy, alertTitle, signature) {
     let values = Array.from(elements).map(el => el.textContent.trim());
     let timeout = 2000;
     let jsonData = {
-        "action": "{{strategy.order.action}}",
-        "alert_message": "{{strategy.order.alert_message}}",
-        "close": "{{close}}",
-        "comment": "{{strategy.order.comment}}",
-        "contracts": "{{strategy.order.contracts}}",
-        "exchange": "{{exchange}}",
-        "high": "{{high}}",
-        "id": "{{strategy.order.id}}",
-        "interval": "{{interval}}",
-        "low": "{{low}}",
-        "open": "{{open}}",
-        "position_size": "{{strategy.position_size}}",
-        "prev_market_position": "{{strategy.prev_market_position}}",
-        "prev_market_position_size": "{{strategy.prev_market_position_size}}",
-        "price": "{{strategy.order.price}}",
-        "ticker": "{{ticker}}",
-        "time": "{{time}}",
-        "signature": signature
+    "action": "{{strategy.order.action}}",
+    "alert_message": "{{strategy.order.alert_message}}",
+    "close": "{{close}}",
+    "comment": "{{strategy.order.comment}}",
+    "contracts": "{{strategy.order.contracts}}",
+    "exchange": "{{exchange}}",
+    "high": "{{high}}",
+    "id": "{{strategy.order.id}}",
+    "interval": "{{interval}}",
+    "low": "{{low}}",
+    "open": "{{open}}",
+    "volume": "{{volume}}",
+    "syminfo_currency": "{{syminfo.currency}}",
+    "syminfo_basecurrency": "{{syminfo.basecurrency}}",
+    "market_position": "{{strategy.market_position}}",
+    "position_size": "{{strategy.position_size}}",
+    "market_position_size": "{{strategy.market_position_size}}",
+    "prev_market_position": "{{strategy.prev_market_position}}",
+    "prev_market_position_size": "{{strategy.prev_market_position_size}}",
+    "price": "{{strategy.order.price}}",
+    "ticker": "{{ticker}}",
+    "time": "{{time}}",
+    "signature": signature
     };
     for (let i = 0; i < elements.length; i++) {
         // Click each item
