@@ -30,21 +30,21 @@ function selectDropdownOption(dropdownSelector, optionText) {
 function updateTextareaWithJson(jsonData, alertTitle) {
     const alertmessage = document.querySelector('[id="alert-message"]');
     const alertname = document.querySelector('[id="alert-name"]');
-    
-    // Create a new event
-    let event = new Event('input', { bubbles: true });
-    if (alertmessage) {
+      // Create a new 'change' event
+
+   if (alertmessage) {
         alertmessage.value = JSON.stringify(jsonData);
-        alertmessage.dispatchEvent(event);
-        alertname.value = alertTitle;
+        alertname.innerHTML = alertTitle;
     }
+
 }
+
 
 // This function will automate the workflow of creating alerts for earnings events
 async function automateWorkflow(strategy, alertTitle, signature) {
     let elements = document.querySelectorAll("[class^='item-brCSL33P']");
     let values = Array.from(elements).map(el => el.textContent.trim());
-    let timeout = 2000;
+    let timeout = 5000;
     let jsonData = {
     "action": "{{strategy.order.action}}",
     "alert_message": "{{strategy.order.alert_message}}",
@@ -88,6 +88,8 @@ async function automateWorkflow(strategy, alertTitle, signature) {
 
         document.querySelector('.submitBtn-RHTYtJvz').click();
         
+        elements[i].remove();
+        
         await new Promise(resolve => setTimeout(resolve, timeout));
     }
 
@@ -97,4 +99,4 @@ async function automateWorkflow(strategy, alertTitle, signature) {
 // strategy: RSI Strategy (14, 30, 70) |
 // alertTitle: RSI | MacD 
 // signature: 
-automateWorkflow('RSI Strategy (14, 30, 70)', 'RSI', 'signature' );
+automateWorkflow('MACD Strategy (12, 26, 9)', 'MacD', 'signature' );
